@@ -273,7 +273,7 @@
     "explanation": "Dispatch ativa os reducers; store armazena o estado; reducers descrevem como o estado muda."
   },
   {
-    "question": "Pressupõe-se ter uma função reducer chamada red. Sabe-se que, sempre que criada, é preciso enviar a função redutora, e para tanto será criada uma loja chamada store. Como se realiza isso em um mesmo comando?",
+    "question": "Pressupõe-se ter uma função reducer chamada red. Sabe-se que, sempre que criada, é preciso enviar a função redutora, e para tanto será criada uma loja chamada store. Como se realiza isso em um mesmo comando? I - Quando se cria uma loja, deve-se ao menos passar para ela uma função redutora. PORQUE II - A função redutora é que irá retornar a próxima árvore de estados, dadas a árvore de estados atual e uma ação a ser manipulada.",
     "options": {
       "a": "As afirmações I e II estão corretas, e a II é uma justificativa para a I.",
       "b": "As afirmações I e II estão corretas, e a II não é uma justificativa para a I.",
@@ -286,7 +286,7 @@
     "explanation": "Para criar uma store no Redux, é obrigatório fornecer uma função reducer que define como o estado será alterado. Isso justifica a necessidade descrita."
   },
   {
-    "question": "Sobre as stores e suas funções no Redux, assinale a alternativa correta:",
+    "question": "Um componente para monitorar um estado global necessita, além de uma loja criada, fazer o processo de inscrição, em que ela irá ser notificada quando um estado dessa loja muda e precisa buscar o estado da aplicação e suas variáveis de interesse. Sobre as stores e suas funções, é correto afirmar: I - Para ser notificado se determinada loja sofreu alguma alteração em seu estado, pode-se utilizar a função store.subscribe(), que monitora qualquer alteração nela realizada. II - Para realizar a atualização de um componente após a mudança de estado de determinada loja, deve-se utilizar o store.subscribe(), que pode devolver o estado da aplicação com as informações necessárias. III - Quando é necessário utilizar as funções de manipulação das stores, deve-se importar um módulo do pacote Redux, o createStore.",
     "options": {
       "a": "Somente a alternativa I está correta.",
       "b": "Somente as alternativas I e II estão corretas.",
