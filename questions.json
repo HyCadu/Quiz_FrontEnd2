@@ -1,0 +1,326 @@
+[
+  {
+    "question": "Marque a opção que representa um evento de botão em um programa front end:",
+    "options": {
+      "a": "onKeyboard()",
+      "b": "onButton()",
+      "c": "onEvent()",
+      "d": "onMouse()",
+      "e": "onClick()"
+    },
+    "answer": "e",
+    "answer_text": "onClick()",
+    "explanation": "O evento de botão que captura o clique do mouse no botão é o onClick. Nenhuma das outras opções contém um evento válido."
+  },
+  {
+    "question": "Dado o seguinte trecho de código:\n<a href=\"#\" onclick=\"alert('Link clicado!'); return false\">Clique Aqui</a>\nmarque a opção correta.",
+    "options": {
+      "a": "O onclick é um evento React.",
+      "b": "O return false inverte o valor do evento.",
+      "c": "Ao clicar no link, é aberto um alerta.",
+      "d": "O trecho de código é em React.",
+      "e": "O link irá redirecionar para outra página."
+    },
+    "answer": "c",
+    "answer_text": "Ao clicar no link, é aberto um alerta.",
+    "explanation": "Ao clicar no link, é chamado o evento onclick, que abre um alerta com o texto \"Link clicado!\". O onclick é um evento DOM em HTML; em React seria onClick. O return false evita o comportamento padrão do navegador. O trecho de código é em HTML e JavaScript. Por conta do false, o link não redirecionará para outra página."
+  },
+  {
+    "question": "Marque a opção que representa o início de um trecho de código de um manipulador de eventos:",
+    "options": {
+      "a": "btn.onclick = function() { alert(“Alerta”); }",
+      "b": "render() { return (<button> clicar </button>); }",
+      "c": "this.setState ({value: null});",
+      "d": "Descrição da imagem não disponível",
+      "e": "this.handleEvent = this.handleEvent.bind(this);"
+    },
+    "answer": "a",
+    "answer_text": "btn.onclick = function() { alert(“Alerta”); }",
+    "explanation": "O código que manipula o evento é o btn.onclick, que recebe uma função que emite um alerta."
+  },
+  {
+    "question": "Analise o trecho de código a seguir e marque a opção correta:\n<button onClick={(e) => this.deleteRow(id, e)}>Deletar linha</button>",
+    "options": {
+      "a": "O argumento “e” representa o evento do React.",
+      "b": "O código contém erros sintáticos.",
+      "c": "O código contém erros semânticos.",
+      "d": "O argumento “e” só servirá se houver erro.",
+      "e": "O argumento “e” é uma exceção."
+    },
+    "answer": "a",
+    "answer_text": "O argumento “e” representa o evento do React.",
+    "explanation": "O argumento “e” diz respeito ao evento do React, e não representa apenas erro ou exceção. O código não contém erros semânticos ou sintáticos."
+  },
+  {
+    "question": "Sobre os eventos DOM e React, marque a opção correta:",
+    "options": {
+      "a": "Eventos DOM e React são escritos da mesma forma.",
+      "b": "Eventos em React são escritos usando camel case.",
+      "c": "Um elemento HTML DOM não pode disparar um evento.",
+      "d": "No manipulador de eventos React, a função é passada como texto.",
+      "e": "No evento do elemento HTML, não é possível retornar false."
+    },
+    "answer": "b",
+    "answer_text": "Eventos em React são escritos usando camel case.",
+    "explanation": "Os nomes dos eventos em React são escritos usando camel case, em vez de letras minúsculas."
+  },
+  {
+    "question": "Marque a opção que diz respeito ao que deve ser instalado para que possa ser criada uma aplicação React.",
+    "options": {
+      "a": "npm e Node.js",
+      "b": "cd e npm.",
+      "c": "Rails e Vue.js.",
+      "d": "Node.js e cd.",
+      "e": "Vue.js e Laravel."
+    },
+    "answer": "a",
+    "answer_text": "npm e Node.js",
+    "explanation": "Para configurar o ambiente de desenvolvimento, é necessário instalar o npm e o Node.js, que são instalados juntos quando instalado o Node.js obtido em seu site oficial."
+  },
+  {
+    "question": "Marque a opção referente ao comando de criação da aplicação React.",
+    "options": {
+      "a": "npm install -g create-react-app.",
+      "b": "npm start nomedaaplicacao.",
+      "c": "npx create-react-app nomedaaplicacao.",
+      "d": "npx start nomedaaplicacao.",
+      "e": "npm install react-app nomedaaplicacao."
+    },
+    "answer": "c",
+    "answer_text": "npx create-react-app nomedaaplicacao.",
+    "explanation": "Para iniciar uma aplicação React, é necessário utilizar o comando npx create-react-app nomedaaplicacao."
+  },
+  {
+    "question": "Marque a opção do método que os componentes React implementam para gerar os dados que são apresentados na tela.",
+    "options": {
+      "a": "return().",
+      "b": "render().",
+      "c": "getElementById().",
+      "d": "formatElement().",
+      "e": "getElementByTagName()."
+    },
+    "answer": "b",
+    "answer_text": "render().",
+    "explanation": "Para renderizar os componentes, o método é o render()."
+  },
+  {
+    "question": "Marque a opção que representa a tecnologia que permite a escrita de elementos HTML dentro de trechos JavaScript.",
+    "options": {
+      "a": "CSS.",
+      "b": "JSF.",
+      "c": "DOM.",
+      "d": "JSX.",
+      "e": "SPA."
+    },
+    "answer": "d",
+    "answer_text": "JSX.",
+    "explanation": "A tecnologia que facilita o desenvolvimento com React e permite a escrita de código HTML dentro de códigos JavaScript é a JSX, de JavaScript XML."
+  },
+  {
+    "question": "Marque a opção referente à característica que torna o código das aplicações mais previsível e simples de ser depurado.",
+    "options": {
+      "a": "Declarativa.",
+      "b": "Subjetiva.",
+      "c": "Objetiva.",
+      "d": "Construtiva.",
+      "e": "Renderizada."
+    },
+    "answer": "a",
+    "answer_text": "Declarativa.",
+    "explanation": "A característica que torna as aplicações mais previsíveis e simples de serem depuradas é a declarativa."
+  },
+  {
+    "question": "Qual deve ser a estrutura utilizada para montar um componente funcional React com o nome Exemplo que retorna uma saudação?",
+    "options": {
+      "a": "Exemplo() {\n  return (\n    < h1 >Olá, seja bem-vindo ao nosso componente< /h1>\n  );\n}",
+      "b": "function exemplo() {\n  return (\n    < h1 >Olá, seja bem-vindo ao nosso componente< /h1>\n  );\n}",
+      "c": "function Exemplo() {\n  return (\n    < h1 >Olá, seja bem-vindo ao nosso componente < /h1 >\n  );\n}",
+      "d": "function Exemplo() {\n  return (\n    Olá, seja bem-vindo ao nosso componente\n  );\n}",
+      "e": "function Exemplo() {\n  < h1>Olá, seja bem-vindo ao nosso componente < /h1>\n}"
+    },
+    "answer": "c",
+    "answer_text": "function Exemplo() {\n  return (\n    < h1 >Olá, seja bem-vindo ao nosso componente < /h1 >\n  );\n}",
+    "explanation": "Um componente funcional React deve ser declarado com a palavra-chave 'function', nome com inicial maiúscula e retornar JSX com uma tag macro."
+  },
+  {
+    "question": "Assinale a alternativa que apresenta corretamente a estrutura mínima de um componente em class no React.",
+    "options": {
+      "a": "class Exemplo{\n    return() {\n        render (\n             <h1>Olá, seja bem-vindo ao nosso componente</h1>\n        );\n    }\n}",
+      "b": "class Exemplo{\n    render() {\n         <h1>Olá, seja bem-vindo ao nosso componente</h1>\n    }\n}",
+      "c": "class Exemplo{\n     return (\n         <h1>Olá, seja bem-vindo ao nosso componente</h1>\n     );\n}",
+      "d": "Exemplo{\n    render() {\n        return (\n          <h1>Olá, seja bem-vindo ao nosso componente</h1>\n        );\n    }\n}",
+      "e": "class Exemplo{\n    render() {\n        return (\n          <h1>Olá, seja bem-vindo ao nosso componente</h1>\n        );\n    }\n}"
+    },
+    "answer": "e",
+    "answer_text": "class Exemplo{\n    render() {\n        return (\n          <h1>Olá, seja bem-vindo ao nosso componente</h1>\n        );\n    }\n}",
+    "explanation": "Para um componente React baseado em classe estar correto, ele deve conter a palavra-chave class, nome com inicial maiúscula e um método render com return contendo JSX."
+  },
+  {
+    "question": "Como devem ser utilizadas as props nome e texto dentro de um componente funcional React?",
+    "options": {
+      "a": "props.Nome e props.Texto.",
+      "b": "Props.Nome e Props.Texto.",
+      "c": "nome e texto.",
+      "d": "props.nome e props.texto.",
+      "e": "Props.nome e Props.texto."
+    },
+    "answer": "d",
+    "answer_text": "props.nome e props.texto.",
+    "explanation": "As props devem ser utilizadas seguindo a convenção JavaScript: props.nome e props.texto, conforme declaradas no cabeçalho da função."
+  },
+  {
+    "question": "Marque a ordem correta dos parâmetros da função ReactDOM.render().",
+    "options": {
+      "a": "o elemento DOM do HTML e o componente.",
+      "b": "o componente e uma função de call-back.",
+      "c": "o componente e o elemento DOM do HTML.",
+      "d": "o componente e as suas props.",
+      "e": "as props e o componente."
+    },
+    "answer": "c",
+    "answer_text": "o componente e o elemento DOM do HTML.",
+    "explanation": "A função ReactDOM.render() recebe primeiro o componente React e depois o elemento DOM onde será renderizado."
+  },
+  {
+    "question": "Qual é a forma correta de chamar um componente React TextBox com as props type, label e name?",
+    "options": {
+      "a": "<TextBox type=text label=Login name=login />.",
+      "b": "<TextBox type=\"text\" label=\"Login\" name=\"login\" />.",
+      "c": "<textbox type=\"text\" label=\"Login\" name=\"login\" />.",
+      "d": "<textbox type=text label=Login name=login />.",
+      "e": "<TextBox text=type login=label login=name />."
+    },
+    "answer": "b",
+    "answer_text": "<TextBox type=\"text\" label=\"Login\" name=\"login\" />.",
+    "explanation": "Componentes React devem ser chamados com inicial maiúscula e as props devem seguir o padrão nome=\"valor\"."
+  },
+  {
+    "question": "Qual método é utilizado para atualizar apenas parte dos dados de um objeto em uma requisição REST?",
+    "options": {
+      "a": "GET.",
+      "b": "PUT.",
+      "c": "PATCH.",
+      "d": "DELETE.",
+      "e": "POST."
+    },
+    "answer": "c",
+    "answer_text": "PATCH.",
+    "explanation": "O método PATCH é utilizado para atualizar apenas parte dos dados de um objeto."
+  },
+  {
+    "question": "Marque a opção que representa o elemento da estrutura de dados JSON que é um conjunto com um ou mais pares nome/valor:",
+    "options": {
+      "a": "String.",
+      "b": "Número.",
+      "c": "Valor.",
+      "d": "Array.",
+      "e": "Objeto."
+    },
+    "answer": "e",
+    "answer_text": "Objeto.",
+    "explanation": "Em JSON, um objeto é um conjunto de um ou mais pares nome/valor."
+  },
+  {
+    "question": "Marque a constraint que diz que 'cada par requisição e resposta deve ser tratado de forma independente em relação a requisições anteriores ou posteriores'.",
+    "options": {
+      "a": "Cliente-servidor.",
+      "b": "Stateless.",
+      "c": "Interface uniforme.",
+      "d": "Cache.",
+      "e": "Código sob demanda."
+    },
+    "answer": "b",
+    "answer_text": "Stateless.",
+    "explanation": "A constraint Stateless determina que cada requisição deve ser independente."
+  },
+  {
+    "question": "Marque a categoria de códigos que representa erro no cliente em uma API REST:",
+    "options": {
+      "a": "1xx.",
+      "b": "2xx.",
+      "c": "3xx.",
+      "d": "4xx.",
+      "e": "5xx."
+    },
+    "answer": "d",
+    "answer_text": "4xx.",
+    "explanation": "Códigos da categoria 4xx representam erros causados pelo cliente, como 404 e 401."
+  },
+  {
+    "question": "Marque a opção que representa o código lançado quando o usuário tentar acessar uma rota não existente:",
+    "options": {
+      "a": "404.",
+      "b": "403.",
+      "c": "500.",
+      "d": "503.",
+      "e": "401."
+    },
+    "answer": "a",
+    "answer_text": "404.",
+    "explanation": "O código 404 significa que a rota ou recurso solicitado não foi encontrado."
+  },
+  {
+    "question": "Sobre os elementos do Redux: I – São disparados a partir de alguma ação do usuário ou evento do sistema. II – É onde se armazena o estado global. III – Especificam como o estado muda. Trata-se, respectivamente, de:",
+    "options": {
+      "a": "Reducer; store; dispatch.",
+      "b": "Dispatch; store; reducer.",
+      "c": "Dispatch; state; reducer.",
+      "d": "Store; reducer; state.",
+      "e": "Store; state; dispatch."
+    },
+    "answer": "b",
+    "answer_text": "Dispatch; store; reducer.",
+    "explanation": "Dispatch ativa os reducers; store armazena o estado; reducers descrevem como o estado muda."
+  },
+  {
+    "question": "Pressupõe-se ter uma função reducer chamada red. Sabe-se que, sempre que criada, é preciso enviar a função redutora, e para tanto será criada uma loja chamada store. Como se realiza isso em um mesmo comando?",
+    "options": {
+      "a": "As afirmações I e II estão corretas, e a II é uma justificativa para a I.",
+      "b": "As afirmações I e II estão corretas, e a II não é uma justificativa para a I.",
+      "c": "A afirmativa I está correta e a II é falsa.",
+      "d": "A afirmativa I é falsa e a II está correta.",
+      "e": "As afirmativas I e II são falsas."
+    },
+    "answer": "a",
+    "answer_text": "As afirmações I e II estão corretas, e a II é uma justificativa para a I.",
+    "explanation": "Para criar uma store no Redux, é obrigatório fornecer uma função reducer que define como o estado será alterado. Isso justifica a necessidade descrita."
+  },
+  {
+    "question": "Sobre as stores e suas funções no Redux, assinale a alternativa correta:",
+    "options": {
+      "a": "Somente a alternativa I está correta.",
+      "b": "Somente as alternativas I e II estão corretas.",
+      "c": "Somente as alternativas II e III estão corretas.",
+      "d": "Somente as alternativas I e III estão corretas.",
+      "e": "As alternativas I, II e III estão corretas."
+    },
+    "answer": "d",
+    "answer_text": "Somente as alternativas I e III estão corretas.",
+    "explanation": "A função store.subscribe() monitora alterações. O estado deve ser acessado via getState(). createStore deve ser importado do Redux."
+  },{
+    "question": "A maneira mais fácil de começar a utilizar o Redux em aplicações é por meio das instalações dos pacotes pelo npm. Para utilizar dentro de uma aplicação React, qual(is) comando(s) é(são) obrigatório(s) para a(s) sua(s) instalação(ões)?",
+    "options": {
+      "a": "Somente npm install redux.",
+      "b": "Somente npm install react-redux.",
+      "c": "npm install flux; npm install react-redux.",
+      "d": "npm install redux; npm install react.",
+      "e": "npm install redux; npm install react-redux."
+    },
+    "answer": "e",
+    "answer_text": "npm install redux; npm install react-redux.",
+    "explanation": "Para a utilização do Redux, é preciso instalar a biblioteca por meio do comando npm install redux. Para utilizar juntamente com o React, é necessária a instalação do pacote por meio do comando npm install react-redux."
+  },
+  {
+    "question": "Existem funções no Redux que descrevem como o estado da aplicação será alterado. Nesse caso, trata-se de:",
+    "options": {
+      "a": "Funções de ações (ou action functions).",
+      "b": "Funções redutoras (ou reducers).",
+      "c": "Funções de despacho (ou dispatch).",
+      "d": "Funções de estado (ou state functions).",
+      "e": "Funções da loja (ou store functions)."
+    },
+    "answer": "b",
+    "answer_text": "Funções redutoras (ou reducers).",
+    "explanation": "As reducers definem como o estado muda em resposta às ações no Redux."
+  }
+]

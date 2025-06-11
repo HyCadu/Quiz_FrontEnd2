@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz FronEnd 2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .correct {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .incorrect {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .feedback-visible {
+      padding: 0.75rem;
+      border: 1px solid #4a5568;
+      border-radius: 0.375rem;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .feedback-hidden {
+      opacity: 0;
+      height: 0;
+      padding: 0;
+      border: none;
+      overflow: hidden;
+      transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out;
+    }
+
+    .option-button {
+      transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    }
+
+    .option-button:hover:not(:disabled) {
+      filter: brightness(1.2);
+    }
+
+    .option-button:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .correct-highlight {
+      border: 2px solid #4caf50;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+  <div class="container mx-auto max-w-2xl">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8">Quiz Dart e Flutter</h1>
+    <div id="quiz-container" class="bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+      <div id="progress-indicator" class="text-right text-sm text-gray-400 mb-4"></div>
+      <div id="question-container" class="mb-6">
+        <!-- Pergunta será carregada aqui -->
+      </div>
+      <div id="options-container" class="space-y-3">
+        <!-- Opções serão carregadas aqui -->
+      </div>
+      <div id="feedback" class="mt-6 text-center font-semibold feedback-hidden">
+        <!-- Feedback será exibido aqui -->
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row gap-3">
+        <button id="prev-button" class="w-full md:w-1/2 bg-gray-600 hover:bg-gray-500 text-white py-2 px-4 rounded hidden transition-opacity duration-300">
+          Voltar
+        </button>
+        <button id="next-button" class="w-full md:w-1/2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded hidden transition-opacity duration-300">
+          Próxima Pergunta
+        </button>
+      </div>
+      <div id="score-container" class="mt-6 text-center hidden">
+        <p id="final-score" class="text-xl font-bold mb-4"></p>
+        <button id="restart-button" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded transition-colors duration-200">
+          Reiniciar Quiz
+        </button>
+      </div>
+    </div>
+    <div class="text-center mt-8 text-gray-500 text-sm">
+      Desenvolvido por: Cadu Kar Alho
+    </div>
+  </div>
+
+  <script>
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let quizData = [];
+
+    const questionContainer = document.getElementById('question-container');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackElement = document.getElementById('feedback');
+    const nextButton = document.getElementById('next-button');
+    const prevButton = document.getElementById('prev-button');
+    const progressIndicator = document.getElementById('progress-indicator');
+    const quizContainer = document.getElementById('quiz-container');
+    const scoreContainer = document.getElementById('score-container');
+    const finalScoreElement = document.getElementById('final-score');
+    const restartButton = document.getElementById('restart-button');
+
+    async function fetchQuestions() {
+      try {
+        const response = await fetch('questions.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        quizData = await response.json();
+        startQuiz();
+      } catch (error) {
+        console.error("Could not load quiz data:", error);
+        questionContainer.innerHTML = "<p class='text-red-500 text-center'>Erro ao carregar as perguntas. Verifique o console.</p>";
+      }
+    }
+
+    function loadQuestion() {
+      scoreContainer.classList.add('hidden');
+      questionContainer.classList.remove('hidden');
+      optionsContainer.classList.remove('hidden');
+      progressIndicator.classList.remove('hidden');
+
+      const questionData = quizData[currentQuestionIndex];
+      progressIndicator.textContent = `Pergunta ${currentQuestionIndex + 1} de ${quizData.length}`;
+
+      const sanitizedQuestion = questionData.question.replace(/</g, "&lt;");
+      questionContainer.innerHTML = `<p class='text-lg font-medium'>${currentQuestionIndex + 1}. ${sanitizedQuestion}</p>`;
+
+      optionsContainer.innerHTML = '';
+      for (const key in questionData.options) {
+        const optionButton = document.createElement('button');
+        optionButton.classList.add('option-button', 'w-full', 'bg-gray-700', 'hover:bg-gray-600', 'text-white', 'py-3', 'px-4', 'rounded', 'text-left');
+        const sanitizedOption = questionData.options[key].replace(/</g, "&lt;");
+        optionButton.innerHTML = `${key.toUpperCase()}) ${sanitizedOption}`;
+        optionButton.dataset.value = key;
+        optionButton.addEventListener('click', () => checkAnswer(key, optionButton));
+        optionsContainer.appendChild(optionButton);
+      }
+
+      feedbackElement.classList.remove('feedback-visible');
+      feedbackElement.classList.add('feedback-hidden');
+      feedbackElement.textContent = '';
+      nextButton.classList.add('hidden');
+
+      if (currentQuestionIndex > 0) {
+        prevButton.classList.remove('hidden');
+      } else {
+        prevButton.classList.add('hidden');
+      }
+
+      const buttons = optionsContainer.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove('opacity-70', 'cursor-not-allowed', 'correct', 'incorrect', 'correct-highlight');
+        btn.classList.add('bg-gray-700', 'hover:bg-gray-600');
+      });
+    }
+
+    function checkAnswer(selected, button) {
+      const questionData = quizData[currentQuestionIndex];
+      const isCorrect = selected === questionData.answer;
+
+      const buttons = optionsContainer.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-gray-600');
+        btn.classList.add('opacity-70', 'cursor-not-allowed');
+      });
+
+      const sanitizedExplanation = questionData.explanation.replace(/</g, "&lt;");
+
+      if (isCorrect) {
+        score++;
+        button.classList.remove('bg-gray-700');
+        button.classList.add('correct');
+        feedbackElement.innerHTML = `<span class="text-green-400">✔️ Correto!</span> ${sanitizedExplanation}`;
+      } else {
+        button.classList.remove('bg-gray-700');
+        button.classList.add('incorrect');
+        const correctBtn = optionsContainer.querySelector(`button[data-value="${questionData.answer}"]`);
+        if (correctBtn) {
+          correctBtn.classList.remove('bg-gray-700');
+          correctBtn.classList.add('correct-highlight');
+        }
+        const sanitizedAnswerText = questionData.answer_text.replace(/</g, "&lt;");
+        feedbackElement.innerHTML =
+          `<span class="text-red-400">❌ Incorreto!</span> Resposta correta: <strong>${questionData.answer.toUpperCase()}) ${sanitizedAnswerText}</strong>. <br> ${sanitizedExplanation}`;
+      }
+
+      feedbackElement.classList.remove('feedback-hidden');
+      feedbackElement.classList.add('feedback-visible');
+      nextButton.classList.remove('hidden');
+    }
+
+    function showFinalScore() {
+      questionContainer.classList.add('hidden');
+      optionsContainer.classList.add('hidden');
+      feedbackElement.classList.remove('feedback-visible');
+      feedbackElement.classList.add('hidden');
+      nextButton.classList.add('hidden');
+      prevButton.classList.add('hidden');
+      progressIndicator.classList.add('hidden');
+
+      const percentage = ((score / quizData.length) * 100).toFixed(1);
+      finalScoreElement.innerHTML = `Você completou o quiz!<br>Pontuação final: ${score} de ${quizData.length} (${percentage}%)`;
+      scoreContainer.classList.remove('hidden');
+    }
+
+    nextButton.addEventListener('click', () => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < quizData.length) {
+        loadQuestion();
+      } else {
+        showFinalScore();
+      }
+    });
+
+    prevButton.addEventListener('click', () => {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
+      }
+    });
+
+    restartButton.addEventListener('click', () => {
+      score = 0;
+      currentQuestionIndex = 0;
+      loadQuestion();
+    });
+
+    function startQuiz() {
+      score = 0;
+      currentQuestionIndex = 0;
+      loadQuestion();
+    }
+
+    fetchQuestions();
+  </script>
+</body>
+
+</html>
