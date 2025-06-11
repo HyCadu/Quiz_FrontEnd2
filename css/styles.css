@@ -1,0 +1,43 @@
+/* Estilos para botões e feedback */
+.correto {
+  background-color: #4caf50;
+  color: white;
+}
+
+.incorreto {
+  background-color: #f44336;
+  color: white;
+}
+
+.feedback-visivel {
+  padding: 0.75rem;
+  border: 1px solid #4a5568;
+  border-radius: 0.375rem;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.feedback-oculto {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.botao-opcao {
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.botao-opcao:hover:not(:disabled) {
+  filter: brightness(1.2);
+}
+
+.botao-opcao:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.destaque-correto {
+  border: 2px solid #4caf50;
+}
